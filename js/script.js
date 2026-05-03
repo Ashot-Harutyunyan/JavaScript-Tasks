@@ -899,6 +899,60 @@ console.log(checkBinaryPowerThetaX(10));
 
 console.log('--------------------------------------------------');
 
+console.log('Ստեղծել ֆունկցիա, որը որպես պարամետր կընդունի զանգված և պատահական կարգով')
+console.log('կխառնի զանգվածի տարրերը։')
+
+function permuteSequenceNuX(sequenceNuX){
+    for(let i = sequenceNuX.length - 1; i > 0; i--){
+        let swapIndexNuX = Math.floor(Math.random() * (i + 1));
+
+        let tempNuX = sequenceNuX[i];
+        sequenceNuX[i] = sequenceNuX[swapIndexNuX];
+        sequenceNuX[swapIndexNuX] = tempNuX;
+    }
+
+    return sequenceNuX;
+}
+
+console.log(permuteSequenceNuX([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]));
+console.log(permuteSequenceNuX(['boo', false, 'foo', true, {a:1}]));
+
+console.log('--------------------------------------------------');
+
+console.log('Ստեղծել ֆունկցիա, որը որպես պարամետր կընդունի թիվը և կվերադարձնի նրա')
+console.log("բաժանարարների զանգվածը, որոնք պարզ թվեր են։")
+
+function extractPrimeFactorsXiX(targetXiX){
+    let divisorCollectionXiX = [];
+
+    for(let i = 2; i <= targetXiX; i++) {
+
+        if(targetXiX % i === 0) {
+
+            let isPrimeXiX = true;
+
+            for(let probeXiX = 2; probeXiX <= Math.sqrt(i); probeXiX++) {
+                if(i % probeXiX === 0){
+                    isPrimeXiX = false;
+                    break;
+                }
+            }
+
+            if(isPrimeXiX) {
+                divisorCollectionXiX.push(i);
+            }
+        }
+    }
+
+    return divisorCollectionXiX;
+}
+
+console.log(extractPrimeFactorsXiX(6)); 
+console.log(extractPrimeFactorsXiX(28));
+console.log(extractPrimeFactorsXiX(30));
+
+console.log('--------------------------------------------------');
+
 console.log('Реализуйте класс Worker (Работник), который будет иметь следующие свойства:')
 console.log('name (имя), surname (фамилия), rate (ставка за день работы), days (количество отработанных дней).')
 console.log('Также класс должен иметь метод getSalary(), который будет выводить зарплату работника.')
