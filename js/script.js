@@ -902,54 +902,44 @@ console.log('--------------------------------------------------');
 console.log('Ստեղծել ֆունկցիա, որը որպես պարամետր կընդունի զանգված և պատահական կարգով')
 console.log('կխառնի զանգվածի տարրերը։')
 
-function permuteSequenceNuX(sequenceNuX){
-    for(let i = sequenceNuX.length - 1; i > 0; i--){
+function changeOrder(array) {
+    for(let i = array.length - 1; i > 0; i--) {
         let swapIndexNuX = Math.floor(Math.random() * (i + 1));
 
-        let tempNuX = sequenceNuX[i];
-        sequenceNuX[i] = sequenceNuX[swapIndexNuX];
-        sequenceNuX[swapIndexNuX] = tempNuX;
+        let tempNuX = array[i];
+        array[i] = array[swapIndexNuX];
+        array[swapIndexNuX] = tempNuX;
     }
 
-    return sequenceNuX;
+    return array;
 }
 
-console.log(permuteSequenceNuX([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]));
-console.log(permuteSequenceNuX(['boo', false, 'foo', true, {a:1}]));
+console.log(changeOrder([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]));
+console.log(changeOrder(['boo', false, 'foo', true, {a:1}]));
 
 console.log('--------------------------------------------------');
 
 console.log('Ստեղծել ֆունկցիա, որը որպես պարամետր կընդունի թիվը և կվերադարձնի նրա')
 console.log("բաժանարարների զանգվածը, որոնք պարզ թվեր են։")
 
-function extractPrimeFactorsXiX(targetXiX){
-    let divisorCollectionXiX = [];
+function primeNumberDivisors(number){
+    const arr = []
 
-    for(let i = 2; i <= targetXiX; i++) {
-
-        if(targetXiX % i === 0) {
-
-            let isPrimeXiX = true;
-
-            for(let probeXiX = 2; probeXiX <= Math.sqrt(i); probeXiX++) {
-                if(i % probeXiX === 0){
-                    isPrimeXiX = false;
-                    break;
-                }
-            }
-
-            if(isPrimeXiX) {
-                divisorCollectionXiX.push(i);
+    for(let i = 2; i <= Math.ceil(number / 2); i++){        
+        if(number % i === 0){
+            arr.push(i)
+            for(let j = 2; j <= Math.sqrt(i); j++){
+                if(i % j === 0) arr.pop()
             }
         }
     }
-
-    return divisorCollectionXiX;
+  
+    return arr
 }
 
-console.log(extractPrimeFactorsXiX(6)); 
-console.log(extractPrimeFactorsXiX(28));
-console.log(extractPrimeFactorsXiX(30));
+console.log(primeNumberDivisors(6)); 
+console.log(primeNumberDivisors(28));
+console.log(primeNumberDivisors(30));
 
 console.log('--------------------------------------------------');
 
